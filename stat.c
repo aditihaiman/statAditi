@@ -12,19 +12,10 @@ int main(){
     struct stat buf;
     
     stat("stat.c", &buf);
-    
     char str[100];
-    
     sprintf(str, "Size of file: %lld bytes", buf.st_size);
     printf("%s\n", str);
-    
-    //printf("size: %lld\n", buf.st_size);
-    mode_t *mode = &buf.st_mode;
-    
-    printf("%d\n", mode);
-    printf("permissions: %o\n", *mode);
-    printf("permissions: %o\n", *mode++);
-
+    printf("File permissions: %o\n", buf.st_mode);
     printf("Time last accessed: %s\n", ctime(&buf.st_atime));
 
     return 0;
