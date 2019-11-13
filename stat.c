@@ -13,9 +13,16 @@ int main(){
     
     stat("stat.c", &buf);
     
-    int timeT = buf.st_atime;
+    char str[100];
     
-    printf("%x\n", timeT);
+    sprintf(str, "Size of file: %lld bytes", buf.st_size);
+    printf("%s\n", str);
+    
+    //printf("size: %lld\n", buf.st_size);
+    mode_t *mode = &buf.st_mode;
+    
+    printf("permissions: %o\n", mode[0]);
+    printf("time: %s\n", ctime(&buf.st_atime));
 
     return 0;
 }
