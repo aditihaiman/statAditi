@@ -21,8 +21,11 @@ int main(){
     //printf("size: %lld\n", buf.st_size);
     mode_t *mode = &buf.st_mode;
     
-    printf("permissions: %o\n", mode[0]);
-    printf("time: %s\n", ctime(&buf.st_atime));
+    printf("%d\n", mode);
+    printf("permissions: %o\n", *mode);
+    printf("permissions: %o\n", *mode++);
+
+    printf("Time last accessed: %s\n", ctime(&buf.st_atime));
 
     return 0;
 }
